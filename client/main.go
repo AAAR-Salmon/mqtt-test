@@ -8,7 +8,7 @@ import (
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 )
 
-var options *mqtt.ClientOptions = mqtt.NewClientOptions().AddBroker("tcp://mqtt-broker:1883")
+var options *mqtt.ClientOptions = mqtt.NewClientOptions().AddBroker("tcp://mqtt-broker:1883").SetConnectRetry(true)
 var msgCh = make(chan mqtt.Message)
 
 func onReceive(client mqtt.Client, msg mqtt.Message) {
